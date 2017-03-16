@@ -23,12 +23,17 @@ Article.prototype.toHtml = function() {
   this.publishStatus = this.publishedOn ? `published ${this.daysAgo} days ago` : '(draft)';
 
   // TODO: Use the function that Handlebars gave you to return your filled-in html template for THIS article.
+  var source = $('#articles-template').html();
 
+  var templateRender = Handlebars.compile(source);
+  console.log(templateRender);
+  console.log(source);
+  return templateRender(this);
 };
 
-rawData.sort(function(a,b) {
-  return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
-});
+// rawData.sort(function(a,b) {
+//   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
+// });
 
 rawData.forEach(function(articleObject) {
   articles.push(new Article(articleObject));
