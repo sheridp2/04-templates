@@ -12,15 +12,20 @@
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
 
     <script id="articles-template" type="text/x-handlebars-template">
-      <h1>{{title}}</h1>
-      <a href="#">{{category}}</a>
-      <a href="{{authorUrl}}"></a>
-      <a href="#">{{author}}</a>
-      <time>{{publishedOn}}</time> -->
-      {{body}}
+      <article data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            published about <time pubdate datetime="">{{daysAgo}}</time> days ago
+          </div>
+        </header>
+        <section class="article-body">
+          {{{body}}}
+          <a class="read-on" href="#">Read on &rarr;</a>
+        </section>
+      </article>
     </script>
-
-
 
     <!--
       TODO: Add a script tag to hold the Handlebars template.
